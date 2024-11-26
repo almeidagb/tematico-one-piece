@@ -1,0 +1,623 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: #6e8dc7;
+  background-image: url('../img/imagem-fundo.png');
+  font-family: "Merriweather", serif;
+  background-attachment: fixed;
+  font-weight: 300;
+  font-style: normal;
+  height: 100%;
+  margin: 0; /* Remova margem padrão do body */
+  padding: 0;
+}
+
+
+header {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #fdc03c;
+  z-index: 10; /* Certifica que está acima de outros elementos */
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+header nav{
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+ .menu , .texto-logo img{
+  display: flex;
+  justify-content: space-between;
+}
+header nav a {
+  display: flex;
+  gap: 10px;
+  color: #4b4b4b;
+  
+}
+
+.titulo{
+  color: #ddd;
+  margin: 50px;
+}
+/*imagem do header*/
+.texto-logo img {
+  width: 13%; /* Tamanho fixo da imagem */
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/*navegçao*/
+nav a{
+ 
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 15px;
+}
+
+/*hover da navegaçao*/
+a:hover{
+    border-bottom: 1px solid #080808;
+}
+
+
+/* Estilo do botão de alternância */
+.toggle {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Estilo da barra deslizante */
+.icone {
+  margin: 0;
+  width: 50px;
+  height: 25px;
+  background-color: #ddd;
+  border-radius: 25px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+/* Bolinha deslizante */
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+/* Ícones de sol e lua */
+.toggle i {
+ 
+  font-size: 18px;
+  color: #000;
+  transition: color 0.3s;
+}
+
+
+
+body.dark-mode .circle {
+  transform: translateX(25px); /* Move a bolinha para o lado direito */
+}
+
+body.dark-mode .toggle .fa-sun {
+  color: #B8860B
+}
+
+body.dark-mode .toggle .fa-moon {
+  color: #fff;
+}
+body.dark-mode {
+  background-color: #4a628e;
+ 
+}
+body.dark-mode header{
+  background-color:#70510f
+}
+
+body.dark-mode a{
+ color: #ffffff;
+}
+/* Contêiner principal do slider */
+.slider-container {
+  margin: 150px auto; /* Centraliza horizontalmente e cria espaçamento acima */
+  position: relative;
+  width: 1200px; /* Largura fixa do slider */
+  height: 500px; /* Altura fixa do slider */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  display: flex; /* Alinha conteúdo do slider */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+/* Faixa de slides */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Cada slide */
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* Imagens dentro dos slides */
+.slider img {
+  display: block; /* Remove espaçamentos extras ao redor da imagem */
+  max-width: 100%; /* Garante que a imagem se ajuste ao slide */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+
+.slide img {
+  margin: 0; /* Remove margens externas */
+  padding: 10px; /* Adiciona espaçamento interno se necessário */
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Botões de navegação */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+/* Botão da esquerda */
+.prev {
+  left: 10px;
+}
+
+/* Botão da direita */
+.next {
+  right: 10px;
+}
+
+/* Efeito hover nos botões */
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Contêiner que envolve o texto e a imagem */
+.sinopse-container {
+  display: flex;
+  justify-content: center; /* Alinha os elementos no centro horizontalmente */
+  align-items: center; /* Alinha os elementos no centro verticalmente */
+  gap: 50px; /* Espaço entre a imagem e o texto */
+  padding: 20px;
+  height: 100vh; /* Preenche a altura total da tela */
+}
+
+/* Estilo para o texto */
+.sinopse-texto p{
+  width: 700px;
+  text-align: justify; /* Justifica o texto */
+}
+
+/* Estilo para a imagem */
+.sinopse img {
+  width: 300px; /* Defina o tamanho da imagem conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 10px; /* Adiciona borda arredondada à imagem */
+}
+
+.main-content p , .titulo {
+  justify-content: center;
+  align-items: center;
+}
+.sinopse {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.sinopse img{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.sinopse-texto p  {
+  border: 2px solid cornflowerblue;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-align: justify;
+  padding: 20px;
+ 
+}
+.titulo{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.personagem{
+  background-color: #4b4b4b;
+}
+.personagem:hover, .descricao:hover{
+  background-color: #e6a551;
+}
+
+
+
+/* section episodios */
+
+
+
+.episodios-conteiner {
+  text-align: center; /* Centraliza o título */
+  margin: 150px auto; /* Margem superior e inferior */
+}
+
+.episodios-fileira {
+  display: flex; /* Coloca os elementos lado a lado */
+  justify-content: center; /* Centraliza os cards horizontalmente */
+  align-items: center; /* Alinha os cards verticalmente no meio da página */
+  gap: 20px; /* Espaçamento entre os cards */
+  margin: auto; /* Garante centralização horizontal */
+  padding: 20px; /* Espaçamento interno */
+}
+
+.episodios-card {
+  background-color: #f4f4f4; /* Fundo claro dos cards */
+  padding: 15px; /* Espaçamento interno dos cards */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  text-align: center; /* Centraliza o conteúdo do card */
+  width: 200px; /* Define a largura dos cards */
+  flex-shrink: 0; /* Garante que os cards não encolham */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Animação suave */
+ 
+}
+
+/* Animação ao passar o mouse */
+.episodios-card:hover {
+  background-color: #4c00ff; /* Altera a cor do fundo */
+  transform: translateY(-10px) scale(1.05); /* Move o card para cima e aumenta ligeiramente */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+}
+
+.episodios-card img {
+  width: 100%; /* A imagem ocupa toda a largura do card */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 8px; /* Bordas arredondadas para a imagem */
+  margin-bottom: 10px; /* Espaçamento entre a imagem e o texto */
+}
+
+.episodios-card p {
+  margin: 5px 0; /* Espaçamento interno entre os textos */
+  font-size: 14px; /* Tamanho da fonte */
+}
+
+
+.video-container {
+  margin-top: 15px;
+  display: none; /* Esconde o vídeo inicialmente */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+
+/*contatoo*/
+
+/* Estilo para a seção de contato */
+#contato {
+  padding: 60px 20px;
+  text-align: center;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#contato h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+#formulario-contato {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  backdrop-filter: blur(55px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.grupo-formulario {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background-color: #660dda;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff22f4;
+}
+
+#status-mensagem {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #ff22f4;
+}
+
+/* Adicionando animação de fade-in */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+footer p{
+    text-align: center;
+    align-items: center;
+    margin: 20px;
+}
+/* Para telas pequenas (ex: celulares) */
+@media (max-width: 768px) {
+  /* Header */
+  header {
+    height: 70px;
+    flex-direction: column; /* Empilha os itens do header verticalmente */
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Logo no header */
+  .texto-logo img {
+    width: 50%; /* Reduz a largura da imagem */
+  }
+
+  /* Navegação */
+  header nav {
+    display: flex;
+    flex-direction: column; /* Alinha os links verticalmente */
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  /* Slider */
+  .slider-container {
+    margin: 20px auto; /* Ajusta a margem para centralizar */
+    width: 90%; /* Reduz a largura do slider */
+    height: 300px; /* Ajusta a altura */
+  }
+
+  .slider img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Cards dos episódios */
+  .episodios-fileira {
+    flex-direction: column; /* Empilha os cards verticalmente */
+    gap: 10px;
+  }
+
+  .episodios-card {
+    width: 100%; /* Faz os cards ocuparem toda a largura */
+    height: 90%;
+    margin: 10px 0; /* Ajusta o espaçamento */
+  }
+  .episodios-card img{
+    height: 271px;
+    width: 230px;
+  }
+  /* Sinopse */
+  .sinopse-container {
+    flex-direction: column; /* Empilha imagem e texto verticalmente */
+    gap: 20px;
+  }
+
+  /* Formulário de Contato */
+  #formulario-contato {
+    width: 90%; /* Ajusta a largura do formulário */
+    padding: 15px;
+  }
+
+  /* Botões */
+  button {
+    width: 100%; /* Faz o botão ocupar toda a largura do formulário */
+    padding: 15px;
+  }
+}
+
+/* Para telas ainda menores (ex: celulares mais estreitos) */
+@media (max-width: 480px) {
+  /* Ajustes gerais */
+  body {
+    padding: 10px;
+  }
+
+  /* Header */
+  header {
+    padding: 10px;
+    height: 60px; /* Menor altura para o header */
+  }
+
+  /* Logo no header */
+  .texto-logo img {
+    width: 70%; /* Ajusta ainda mais a largura da imagem */
+  }
+
+  /* Navegação */
+  header nav {
+    padding: 5px 0;
+  }
+
+  nav a {
+    font-size: 16px; /* Diminui o tamanho da fonte */
+  }
+
+  /* Slider */
+  .slider-container {
+    width: 100%;
+    height: 250px;
+  }
+
+  /* Cards dos episódios */
+  .episodios-card {
+    width: 100%; /* Faz os cards ocuparem toda a largura */
+  }
+
+  /* Formulário de Contato */
+  #formulario-contato {
+    width: 95%;
+  }
+
+  /* Botões */
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+
+/* Estilo para o menu */
+.menu nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Esconde o menu no mobile por padrão */
+#nav-menu {
+  display: flex;
+}
+
+/* Estilo do botão hambúrguer */
+.hamburguer {
+  display: none;
+  cursor: pointer;
+}
+
+/* Exibe o botão hambúrguer apenas em telas pequenas */
+@media (max-width: 768px) {
+  .hamburguer {
+      display: block;
+  }
+
+  /* O menu será oculto por padrão em telas pequenas */
+  #nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding: 10px;
+  }
+
+  /* Estilizando os links do menu */
+  #nav-menu a {
+      color: white;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+  }
+
+  #nav-menu a:hover {
+      background-color: #444;
+  }
+}
+/* Estilo para quando o menu estiver visível */
+#nav-menu.ativo {
+  display: flex;
+}
+
+
+.video-incorporado {
+  text-align: center; /* Centraliza o conteúdo dentro da div */
+  margin-top: 30px; /* Dá uma margem superior para separar do conteúdo anterior */
+
+}
+
+iframe {
+  max-width: 100%; /* Faz com que o iframe se ajuste ao tamanho da tela */
+  height: 800px auto; /* Mantém a proporção do vídeo */
+}
+
+
+
+
